@@ -14,7 +14,7 @@ This experiment concludes affirmatively the hypothesis. Code is provided to repl
 
 For each digit, the console will print a training error and a picture of the results. Then the 10 BM weights are summed and used for a single BM. This single BM is queried for all digits, and the console prints a picture of the results. (Results must be verified visually.) 
 
-Notably, the results are better after the weights are summed to form a single BM.  The likely reason is that the single digit weights, which are the same size as the summed weight, contain extra noise, which is overwritten upon summation. 
+Notably, the results are better after the weights are summed to form a single BM.  The likely reason is that the single digit weights, which are the same size as the summed weight, contain extra noise, b 
 ```
 git clone ...
 npm i
@@ -23,12 +23,4 @@ node test.js -e 8 -s 4
 # -s is the size of the weights as multiples of size of a single input (28x28)
 ```
 The BMs created are of the restricted form, and trained using the instructions given in "A Practical Guide to Training Restricted Boltzmann Machines", by Geoffrey Hinton. The code in ```data.js``` and the subset of the MNIST dataset is forked from the tensorflow.js repository.
-
-## Acknowledgements
-
-The Author expresses gratitude for Ryan Day, Jeff Wilson, Charles Lehner, Girmachew Ayele, Elizabeth Teshome, and Masresha.
-
-## Contact
-
-The Author of this research may be reached by emailing ```science``` at ```folkstack.com```.
 

@@ -1,0 +1,18 @@
+{
+  "name": "Distributed Training of Boltzmann Machines",
+  "version": "1.0.0",
+  "description": "Real Science",
+  "main": "test.js",
+  "author": "Junius Jonathon",
+  "license": "GPL",
+  "dependencies": {
+    "@tensorflow/tfjs": "",
+    "@tensorflow/tfjs-node": "",
+    "chalk": "^3.0.0",
+    "math-random": "^1.0.1",
+    "minimist": "^1.2.0",
+    "to-arraybuffer": "^1.0.1",
+    "typedarray-to-buffer": "^3.1.5"
+  },
+  "devDependencies": {}
+}

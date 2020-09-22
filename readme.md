@@ -2,7 +2,7 @@
 
 ## Hypothesis and Reasoning
 
-A single Boltzmann Machine (BM) can be trained to possess representations for several distinct inputs.  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input, and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM could be trained in a distributed system.
+A single Boltzmann Machine (BM) can be trained to possess representations for several distinct inputs (i.e. training data).  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input (i.e. class), and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM could be trained in a distributed system.
 
 BMs are a energy based neural networks, rather than probabilistic. The goal of training is to create a representation of the learned data while lowering the energy in the network. A more common energy representation are samples of audio in the amplitude domain. Multiple audio streams can be added together into a single channel.  
 
@@ -14,7 +14,10 @@ This experiment concludes affirmatively the hypothesis. Code is provided to repl
 
 For each digit, the console will print a training error and a picture of the results. Then the 10 BM weights are summed and used for a single BM. This single BM is queried for all digits, and the console prints a picture of the results. (Results must be verified visually.) 
 
-Notably, the results are better after the weights are summed to form a single BM.  The likely reason is that the single digit weights, which are the same size as the summed weight, contain extra noise, b 
+Notably, the results are better after the weights are summed to form a single BM.  The likely reason is that the single digit weights, which are the same size as the summed weight, contain extra noise.
+
+This experiment tests each separate BM on a single class, i.e. one digit.  The conlusions raises the question of whether that filtering is needed, or if each BM could be trained on any, or all, of the of the examples, and then combined, with the same result as this experiment.  
+
 ```
 git clone ...
 npm i

@@ -16,7 +16,8 @@ For each digit, the console will print a training error and a picture of the res
 
 Notably, the results are better after the weights are summed to form a single BM.  The likely reason is that the single digit weights, which are the same size as the summed weight, contain extra noise.
 
-This experiment tests each separate BM on a single class, i.e. one digit.  The conlusions raises the question of whether that filtering is needed, or if each BM could be trained on any, or all, of the of the examples, and then combined, with the same result as this experiment.  
+This experiment tests each separate BM on a single class, i.e. one digit.  The conlusions raises the question of whether that filtering is needed, or if each BM could be trained on any, or all, of the of the examples, and then combined, with the same result as this experiment. Evidence suggests so. 
+
 
 ```
 git clone ...

@@ -2,9 +2,9 @@
 
 ## Hypothesis and Reasoning
 
-A single Boltzmann Machine (BM), like most neural networks, can be trained to possess representaions for several inputs, i.e. images of digits 0-9.  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input, and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM could be trained in a distributed system.
+A single Boltzmann Machine (BM) can be trained to possess representations for several distinct inputs.  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input, and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM could be trained in a distributed system.
 
-BMs are a energy based neural networks, rather than probabilistic. The goal of training is to create a representation of the learned data while lowering the energy in the network. A more common energy representation are samples of audio in the amplitude domain. Multiple audio streams can be added together into a single channel.  This clue was the reasoning for the hypothesis.  
+BMs are a energy based neural networks, rather than probabilistic. The goal of training is to create a representation of the learned data while lowering the energy in the network. A more common energy representation are samples of audio in the amplitude domain. Multiple audio streams can be added together into a single channel.  
 
 ## Experiment and Result
 
@@ -24,3 +24,6 @@ node test.js -e 8 -s 4
 ```
 The BMs created are of the restricted form, and trained using the instructions given in "A Practical Guide to Training Restricted Boltzmann Machines", by Geoffrey Hinton. The code in ```data.js``` and the subset of the MNIST dataset is forked from the tensorflow.js repository.
 
+## Contact
+
+The Author can be reached by emailing ```science``` at ```folkstack.com```. 

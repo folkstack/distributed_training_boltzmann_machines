@@ -5,6 +5,7 @@
   "main": "test.js",
   "author": "Junius Jonathon",
   "license": "GPL",
+  "browserify-shim":{},
   "dependencies": {
     "@tensorflow/tfjs": "",
     "@tensorflow/tfjs-node": "",

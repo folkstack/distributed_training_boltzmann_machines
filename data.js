@@ -22,14 +22,15 @@ const https = require('https');
 const util = require('util');
 const zlib = require('zlib');
 
-const readFile = util.promisify(fs.readFile);
+//const readFile = util.promisify(fs.readFile);
 
 // MNIST data constants:
 const BASE_URL = 'https://storage.googleapis.com/cvdf-datasets/mnist/';
-const TRAIN_IMAGES_FILE = 'train-images-idx3-ubyte';
-const TRAIN_LABELS_FILE = 'train-labels-idx1-ubyte';
-const TEST_IMAGES_FILE = 't10k-images-idx3-ubyte';
-const TEST_LABELS_FILE = 't10k-labels-idx1-ubyte';
+let ds= {}
+ds.TRAIN_IMAGES_FILE = fs.readFileSync('train-images-idx3-ubyte');
+ds.TRAIN_LABELS_FILE = fs.readFileSync('train-labels-idx1-ubyte');
+ds.TEST_IMAGES_FILE = fs.readFileSync('t10k-images-idx3-ubyte');
+ds.TEST_LABELS_FILE = fs.readFileSync('t10k-labels-idx1-ubyte');
 const IMAGE_HEADER_MAGIC_NUM = 2051;
 const IMAGE_HEADER_BYTES = 16;
 const IMAGE_DIMENSION_SIZE = 28;
@@ -43,7 +44,7 @@ const LABEL_FLAT_SIZE = 10;
 async function fetchOnceAndSaveToDiskWithBuffer(filename) {
   return new Promise(resolve => {
     const url = `${BASE_URL}${filename}.gz`;
-    if (fs.existsSync(filename)) {
+    if (true){ //fs.existsSync(filename)) {
       resolve(readFile(filename));
       return;
     }
@@ -88,7 +89,7 @@ function loadHeaderValues(buffer, headerLength) {
 }
 
 async function loadImages(filename) {
-  const buffer = await fetchOnceAndSaveToDiskWithBuffer(filename);
+  const buffer = ds[filename]//wait fetchOnceAndSaveToDiskWithBuffer(filename);
 
   const headerBytes = IMAGE_HEADER_BYTES;
   const recordBytes = IMAGE_DIMENSION_SIZE * IMAGE_DIMENSION_SIZE;
@@ -115,7 +116,7 @@ async function loadImages(filename) {
 }
 
 async function loadLabels(filename) {
-  const buffer = await fetchOnceAndSaveToDiskWithBuffer(filename);
+  const buffer = ds[filename]//await fetchOnceAndSaveToDiskWithBuffer(filename);
 
   const headerBytes = LABEL_HEADER_BYTES;
   const recordBytes = LABEL_RECORD_BYTE;
@@ -150,8 +151,8 @@ class MnistDataset {
   /** Loads training and test data. */
   async loadData() {
     this.dataset = await Promise.all([
-      loadImages(TRAIN_IMAGES_FILE), loadLabels(TRAIN_LABELS_FILE),
-      loadImages(TEST_IMAGES_FILE), loadLabels(TEST_LABELS_FILE)
+      loadImages('TRAIN_IMAGES_FILE'), loadLabels('TRAIN_LABELS_FILE'),
+      loadImages('TEST_IMAGES_FILE'), loadLabels('TEST_LABELS_FILE')
     ]);
     this.trainSize = this.dataset[0].length;
     this.testSize = this.dataset[2].length;

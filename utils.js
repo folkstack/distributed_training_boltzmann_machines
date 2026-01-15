@@ -2,7 +2,7 @@ var fs = require('fs')
 Math.random = require('math-random')
 Error.stackTraceLimit = Infinity
 const tf = require('@tensorflow/tfjs')
-require('@tensorflow/tfjs-node')
+//require('@tensorflow/tfjs-node')
 //require('@tensorflow/tfjs-node-gpu')
 var atob = require('typedarray-to-buffer')
 var btoa = require('to-arraybuffer')
@@ -11,7 +11,7 @@ var argv = require('minimist')(process.argv)
 tf.linear = rootOp
 var log = console.log
 
-const init = initializers = {harmonic, orthoNormal, orthoUniform, orthoTruncated, randomNormal, randomUniform, randomTruncated, zeros, ones}
+const init = initializers = {harmonic, orthoNormal, orthoUniform, orthoTruncated, randomNormal, randomUniform, truncatedNormal, zeros, ones}
 
 module.exports = {angularDistance, pearson, normalize, covariate, correlation, tautime, log, jsdft, dft, harmonic, phase, mag, tf, conv2d, gc, regularize, scalar, dispose, variable, initializers, init, combinatorial, nextTick, createRollMatrix, assert, a0, invertMask,btoa, atob, logistic}
 
@@ -187,15 +187,15 @@ function ones({shape, type}){
   return tf.ones(shape, type)
 }
 
-function randomNormal({shape, mean=0, dev=1, type='float32'}){
+function randomNormal({shape, mean=.5, dev=.05, type='float32'}){
   return tf.randomNormal(shape, mean, dev, type)
 }
 
-function randomTruncated({shape, mean=0, dev=1, type='float32'}){
-  return tf.randomNormal(shape, mean, dev, type)
+function truncatedNormal({shape, mean=.5, dev=.05, type='float32'}){
+  return tf.truncatedNormal(shape, mean, dev, type)
 }
 
-function randomUniform({shape, min=-1, max=1, type='float32'}){
+function randomUniform({shape, min=.5, max=1, type='float32'}){
   return tf.randomUniform(shape, min, max, type)
 }
 
@@ -224,7 +224,7 @@ function tautime(z, sr){
   return t.mul(scalar(Math.PI * 2))
 }
 
-function dft(t, f){
+function dftx(t, f){
   let y = tf.neg(t.matMul(f))
   let s = tf.sin(y)
   let c = tf.cos(y)

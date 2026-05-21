@@ -2,9 +2,9 @@
 # Distributed Training of Boltzmann Machines
 
 ## changelog
-Proved one-shot learning
-Added analytical stuff
-Added some web view 
+* Proved one-shot learning
+* Added analytical stuff
+* Added some web view 
 
 ## Hypothesis and Reasoning
 

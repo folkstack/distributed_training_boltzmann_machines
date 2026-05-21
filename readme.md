@@ -22,6 +22,7 @@ node test.js -e 8 -s 4
 ```
 The BMs created are of the restricted form, and trained using the instructions given in "A Practical Guide to Training Restricted Boltzmann Machines", by Geoffrey Hinton. The code in ```data.js``` and the subset of the MNIST dataset is forked from the tensorflow.js repository.
 
-## Contact
-
-The Author can be reached by emailing ```science``` at ```folkstack.com```. 
+## Future Work
+* Demonstrate one-shot training (done, see Next Branch)
+* Develop ML system to learn global representations
+* Synthesizing weights "on the fly"

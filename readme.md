@@ -8,7 +8,7 @@
 
 ## Hypothesis and Reasoning
 
-A single Boltzmann Machine (BM) can be trained to possess representations for several distinct inputs (i.e. training data).  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input (i.e. class), and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM could be trained in a distributed system.
+A single Boltzmann Machine (BM) can be trained to possess representations for several distinct inputs (i.e. training data).  This experiment tests the hypothesis that multiple BMs can be trained separately, one for each desired input (i.e. class), and then combined into a single BM which then possesses all of the learned representations.  Thus, a single BM may be trained in a distributed system.
 
 BMs are a energy based neural networks, rather than probabilistic. The goal of training is to create a representation of the learned data while lowering the energy in the network. A more common energy representation are samples of audio in the amplitude domain. Multiple audio streams can be added together into a single channel.  
 
